@@ -3,6 +3,7 @@
 Parte del sistema BiblioTK (ver `../CLAUDE.md`). App pensada para el celular, con fines ilustrativos: se abre escaneando el QR "Notificaciones" de la landing, se elige un perfil (superadministrador, bibliotecario o lector) y llegan en vivo los avisos que recibiría una cuenta de ese tipo mientras alguien usa BiblioTK en el computador. React 19 + Vite 8 + Tailwind CSS 4 + `socket.io-client`; sin router.
 
 - **Arranque:** `npm run dev` → http://localhost:5177 y, en la red local, `http://<IP del computador>:5177` (`server.host: true`). El celular y el computador deben estar en la misma red Wi-Fi.
+- **Docker:** `Dockerfile` en dos etapas (compila con Vite → nginx sin root con `nginx.conf`). Las `VITE_*` quedan fijas al compilar: por defecto, detrás del gateway de `../InfraBiblioTK` (rutas relativas, un solo origen) y con la subruta `/movil/`. `VITE_BASE` es esa subruta (`base` de Vite y `basename` del router; en desarrollo, `/`).
 - **Librería de interfaz:** `bibliotk-ui` `^0.3.0` de npm (`Logo`, `Alert`, `cn`, `ErrorBoundary`), mismo `globals.css` que los demás fronts.
 - **Variables opcionales (`.env.local`):** `VITE_PORT` (5177), `VITE_NOTIFICACIONES_URL` (sin ella, el mismo host con el que entró el celular en el puerto 3006; vacía = mismo origen, detrás del gateway) y `VITE_BASE` (subruta, `/movil/` detrás del gateway).
 
