@@ -3,10 +3,9 @@ import { ArrowsLeftRight } from "@phosphor-icons/react/ArrowsLeftRight";
 import { Bell } from "@phosphor-icons/react/Bell";
 import { Books } from "@phosphor-icons/react/Books";
 import { UsersThree } from "@phosphor-icons/react/UsersThree";
-import { Alert, cn, Logo } from "bibliotk-ui";
+import { Alert, cn, formatRelativeTime, Logo } from "bibliotk-ui";
 import { useEffect, useState } from "react";
 import { useAvisosDemo } from "./hooks/useAvisosDemo.js";
-import { tiempoRelativo } from "./tiempo.js";
 
 const iconosCategoria = {
 	usuarios: UsersThree,
@@ -136,7 +135,7 @@ function Avisos({ perfil, onCambiar }) {
 												dateTime={aviso.fecha}
 												className="shrink-0 text-xs text-ink-faint"
 											>
-												{tiempoRelativo(aviso.fecha, ahora)}
+												{formatRelativeTime(aviso.fecha, ahora)}
 											</time>
 										</div>
 										<p className="mt-1 text-[14px] leading-snug text-ink-soft">

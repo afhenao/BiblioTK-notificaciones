@@ -4,7 +4,7 @@ Parte del sistema BiblioTK (ver `../CLAUDE.md`). App pensada para el celular, co
 
 - **Arranque:** `npm run dev` → http://localhost:5177 y, en la red local, `http://<IP del computador>:5177` (`server.host: true`). El celular y el computador deben estar en la misma red Wi-Fi.
 - **Docker:** `Dockerfile` en dos etapas (compila con Vite → nginx sin root con `nginx.conf`). Las `VITE_*` quedan fijas al compilar: por defecto, detrás del gateway de `../InfraBiblioTK` (rutas relativas, un solo origen) y con la subruta `/movil/`. `VITE_BASE` es esa subruta (`base` de Vite y `basename` del router; en desarrollo, `/`).
-- **Librería de interfaz:** `bibliotk-ui` `^0.3.0` de npm (`Logo`, `Alert`, `cn`, `ErrorBoundary`), mismo `globals.css` que los demás fronts.
+- **Librería de interfaz:** `bibliotk-ui` `^0.4.0` de npm (`Logo`, `Alert`, `cn`, `formatRelativeTime`, `ErrorBoundary`), mismo `globals.css` que los demás fronts.
 - **Variables opcionales (`.env.local`):** `VITE_PORT` (5177), `VITE_NOTIFICACIONES_URL` (sin ella, el mismo host con el que entró el celular en el puerto 3006; vacía = mismo origen, detrás del gateway) y `VITE_BASE` (subruta, `/movil/` detrás del gateway).
 
 ## Estructura
@@ -17,7 +17,6 @@ src/
     Seleccion.jsx      # Los tres perfiles
     Avisos.jsx         # Cabecera con el perfil y el estado ("En vivo"), lista de avisos (nuevos resaltados)
     perfiles.js        # Clave, nombre, descripción, ejemplo e ícono de cada perfil
-    tiempo.js          # "hace X minutos" (copia de formatRelativeTime de bibliotk-ui 0.4.0, sin publicar)
     hooks/useAvisosDemo.js
     styles/globals.css
   service/
